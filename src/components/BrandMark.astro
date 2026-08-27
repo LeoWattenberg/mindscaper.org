@@ -1,0 +1,23 @@
+---
+interface Props {
+	label?: string;
+}
+
+const { label = 'Mindscaper' } = Astro.props;
+const decorative = label.length === 0;
+---
+
+<span class="brand-lockup">
+	<svg
+		class="brand-mark"
+		viewBox="0 0 48 48"
+		role={decorative ? undefined : 'img'}
+		aria-label={decorative ? undefined : label}
+		aria-hidden={decorative ? 'true' : undefined}
+	>
+		<rect width="48" height="48" rx="14" fill="currentColor" />
+		<path d="M10 16h9l5 8 5-8h9" fill="none" stroke="var(--paper)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+		<path d="M10 32h9l5-8 5 8h9" fill="none" stroke="var(--orange)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+	</svg>
+	<span class="brand-name" aria-hidden="true">mindscaper</span>
+</span>

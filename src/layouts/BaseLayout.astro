@@ -1,0 +1,62 @@
+---
+import '../styles/global.css';
+import type { Locale } from '../i18n/content';
+
+interface Props {
+	lang: Locale;
+	title: string;
+	description: string;
+	canonicalPath: string;
+	enPath: string;
+	dePath: string;
+	noindex?: boolean;
+}
+
+const {
+	lang,
+	title,
+	description,
+	canonicalPath,
+	enPath,
+	dePath,
+	noindex = false,
+} = Astro.props;
+
+const canonical = new URL(canonicalPath, Astro.site);
+const enUrl = new URL(enPath, Astro.site);
+const deUrl = new URL(dePath, Astro.site);
+const locale = lang === 'de' ? 'de_DE' : 'en_US';
+---
+
+<!doctype html>
+<html lang={lang}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="theme-color" content="#f4efe5" />
+		<meta name="color-scheme" content="light" />
+		{noindex && <meta name="robots" content="noindex, follow" />}
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="canonical" href={canonical} />
+		<link rel="alternate" hreflang="en" href={enUrl} />
+		<link rel="alternate" hreflang="de" href={deUrl} />
+		<link rel="alternate" hreflang="x-default" href={enUrl} />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta property="og:site_name" content="Mindscaper" />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:locale" content={locale} />
+		<meta property="og:locale:alternate" content={lang === 'de' ? 'en_US' : 'de_DE'} />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+	</head>
+	<body>
+		<a class="skip-link" href="#main">{lang === 'de' ? 'Zum Inhalt springen' : 'Skip to content'}</a>
+		<slot />
+	</body>
+</html>

@@ -7,8 +7,8 @@ interface Props {
 	title: string;
 	description: string;
 	canonicalPath: string;
-	enPath: string;
-	dePath: string;
+	enPath?: string;
+	dePath?: string;
 	noindex?: boolean;
 }
 
@@ -23,8 +23,8 @@ const {
 } = Astro.props;
 
 const canonical = new URL(canonicalPath, Astro.site);
-const enUrl = new URL(enPath, Astro.site);
-const deUrl = new URL(dePath, Astro.site);
+const enUrl = enPath ? new URL(enPath, Astro.site) : undefined;
+const deUrl = dePath ? new URL(dePath, Astro.site) : undefined;
 const locale = lang === 'de' ? 'de_DE' : 'en_US';
 ---
 
@@ -39,9 +39,9 @@ const locale = lang === 'de' ? 'de_DE' : 'en_US';
 		{noindex && <meta name="robots" content="noindex, follow" />}
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="canonical" href={canonical} />
-		<link rel="alternate" hreflang="en" href={enUrl} />
-		<link rel="alternate" hreflang="de" href={deUrl} />
-		<link rel="alternate" hreflang="x-default" href={enUrl} />
+		{enUrl && <link rel="alternate" hreflang="en" href={enUrl} />}
+		{deUrl && <link rel="alternate" hreflang="de" href={deUrl} />}
+		{enUrl && <link rel="alternate" hreflang="x-default" href={enUrl} />}
 		<title>{title}</title>
 		<meta name="description" content={description} />
 		<meta property="og:site_name" content="Mindscaper" />
@@ -50,7 +50,7 @@ const locale = lang === 'de' ? 'de_DE' : 'en_US';
 		<meta property="og:description" content={description} />
 		<meta property="og:url" content={canonical} />
 		<meta property="og:locale" content={locale} />
-		<meta property="og:locale:alternate" content={lang === 'de' ? 'en_US' : 'de_DE'} />
+		{(lang === 'de' ? enUrl : deUrl) && <meta property="og:locale:alternate" content={lang === 'de' ? 'en_US' : 'de_DE'} />}
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />

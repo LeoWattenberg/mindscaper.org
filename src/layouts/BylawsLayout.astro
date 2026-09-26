@@ -9,17 +9,17 @@ const { frontmatter } = Astro.props;
 	description={frontmatter.description}
 	canonicalPath="/bylaws/"
 	headerVariant="back"
+	showFooter={false}
+	mainClass={null}
+	containerClass="container bylaws-layout"
 >
-
-	<main id="main" class="container bylaws-layout">
-		<article class="bylaws-content">
-			<slot />
-		</article>
-	</main>
+	<article class="bylaws-content">
+		<slot />
+	</article>
 </BaseLayout>
 
 <style>
-	.bylaws-layout {
+	:global(.bylaws-layout) {
 		max-width: 58rem;
 		padding-block: clamp(3rem, 7vw, 6rem);
 	}
@@ -86,7 +86,7 @@ const { frontmatter } = Astro.props;
 	}
 
 	@media (max-width: 620px) {
-		.bylaws-layout {
+		:global(.bylaws-layout) {
 			width: min(100% - 2rem, 58rem);
 		}
 	}

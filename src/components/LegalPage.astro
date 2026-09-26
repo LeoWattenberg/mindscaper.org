@@ -46,58 +46,45 @@ const copy = {
 ---
 
 <BaseLayout title={copy.metaTitle} description={copy.metaDescription} canonicalPath="/legal/">
-	<main id="main" class="page-main">
-		<div class="container">
-			<header class="page-intro">
-				<h1>{copy.title}</h1>
-				<p>{copy.intro}</p>
-			</header>
-			<div class="legal-layout">
-			<nav class="legal-nav" aria-label={copy.navLabel}>
-				<a href="#imprint">{copy.nav.imprint}</a>
-				<a href="#privacy">{copy.nav.privacy}</a>
-			</nav>
-			<div class="legal-content">
-				<section id="imprint">
-					<h2>{copy.imprintTitle}</h2>
-					<p><strong>Mindscaper</strong><br />Non-profit association<br />Kirke Alle 5a<br />6400 Sønderborg<br />Denmark</p>
-					<h3>{copy.contact}</h3>
-					<p><a href="mailto:team@mindscaper.org">team@mindscaper.org</a></p>
-				</section>
-				<section id="privacy">
-					<h2>{copy.privacyTitle}</h2>
-					<p>{copy.privacyIntro}</p>
-					<h3>{copy.controllerTitle}</h3>
-					<p>{copy.controllerBody}</p>
-					<h3>{copy.hostingTitle}</h3>
-					<p>{copy.hostingBody} <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub Privacy Statement</a>.</p>
-					<p>{copy.hostingPurpose}</p>
-					<h3>{copy.contactTitle}</h3>
-					<p>{copy.contactBody}</p>
-					<h3>{copy.externalTitle}</h3>
-					<p>{copy.externalBody}</p>
-					<h3>{copy.cookiesTitle}</h3>
-					<p>{copy.cookiesBody}</p>
-					<h3>{copy.rightsTitle}</h3>
-					<p>{copy.rightsBody}</p>
-					<h3>{copy.complaintTitle}</h3>
-					<p>{copy.complaintBody}</p>
-					<h3>{copy.retentionTitle}</h3>
-					<p>{copy.retentionBody}</p>
-					<h3>{copy.updatesTitle}</h3>
-					<p>{copy.updatesBody}</p>
-				</section>
-			</div>
-			</div>
+	<header class="page-intro">
+		<h1>{copy.title}</h1>
+		<p>{copy.intro}</p>
+	</header>
+	<div class="legal-layout">
+		<nav class="legal-nav" aria-label={copy.navLabel}>
+			<a href="#imprint">{copy.nav.imprint}</a>
+			<a href="#privacy">{copy.nav.privacy}</a>
+		</nav>
+		<div class="legal-content">
+			<section id="imprint">
+				<h2>{copy.imprintTitle}</h2>
+				<p><strong>Mindscaper</strong><br />Non-profit association<br />Kirke Alle 5a<br />6400 Sønderborg<br />Denmark</p>
+				<h3>{copy.contact}</h3>
+				<p><a href="mailto:team@mindscaper.org">team@mindscaper.org</a></p>
+			</section>
+			<section id="privacy">
+				<h2>{copy.privacyTitle}</h2>
+				<p>{copy.privacyIntro}</p>
+				<h3>{copy.controllerTitle}</h3>
+				<p>{copy.controllerBody}</p>
+				<h3>{copy.hostingTitle}</h3>
+				<p>{copy.hostingBody} <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub Privacy Statement</a>.</p>
+				<p>{copy.hostingPurpose}</p>
+				<h3>{copy.contactTitle}</h3>
+				<p>{copy.contactBody}</p>
+				<h3>{copy.externalTitle}</h3>
+				<p>{copy.externalBody}</p>
+				<h3>{copy.cookiesTitle}</h3>
+				<p>{copy.cookiesBody}</p>
+				<h3>{copy.rightsTitle}</h3>
+				<p>{copy.rightsBody}</p>
+				<h3>{copy.complaintTitle}</h3>
+				<p>{copy.complaintBody}</p>
+				<h3>{copy.retentionTitle}</h3>
+				<p>{copy.retentionBody}</p>
+				<h3>{copy.updatesTitle}</h3>
+				<p>{copy.updatesBody}</p>
+			</section>
 		</div>
-	</main>
-	<footer class="site-footer">
-		<div class="container footer-inner">
-			<p>© {new Date().getFullYear()} Mindscaper</p>
-			<nav aria-label="Footer navigation">
-				<a href="/">Home</a>
-				<a href="/legal/" aria-current="page">Legal & privacy</a>
-			</nav>
-		</div>
-	</footer>
+	</div>
 </BaseLayout>

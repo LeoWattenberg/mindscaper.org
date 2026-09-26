@@ -9,9 +9,12 @@ interface Props {
 	noindex?: boolean;
 	headerVariant?: 'home' | 'subpage' | 'back';
 	activePage?: 'join' | 'blog';
+	showFooter?: boolean;
+	mainClass?: string | null;
+	containerClass?: string | null;
 }
 
-const { title, description, canonicalPath, noindex = false, headerVariant = 'subpage', activePage } = Astro.props;
+const { title, description, canonicalPath, noindex = false, headerVariant = 'subpage', activePage, showFooter = true, mainClass = 'page-main', containerClass = 'container' } = Astro.props;
 const canonical = new URL(canonicalPath, Astro.site);
 ---
 
@@ -41,6 +44,30 @@ const canonical = new URL(canonicalPath, Astro.site);
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
 		<SiteHeader variant={headerVariant} activePage={activePage} />
-		<slot />
+		<main id="main" class={mainClass}>
+			<div class={containerClass}><slot /></div>
+		</main>
+		{showFooter && (
+			<footer class="site-footer">
+				<div class="container footer-inner">
+					<p>© {new Date().getFullYear()} Mindscaper</p>
+					<nav aria-label="Footer navigation">
+						{headerVariant === 'home' ? (
+							<>
+								<a href="/join/">Get involved</a>
+								<a href="/blog/">Blog</a>
+								<a href="/legal/">Legal &amp; privacy</a>
+								<a href="https://github.com/LeoWattenberg/mindscaper.org">Website source</a>
+							</>
+						) : (
+							<>
+								<a href="/">Home</a>
+								<a href="/legal/" aria-current={canonicalPath === '/legal/' ? 'page' : undefined}>Legal &amp; privacy</a>
+							</>
+						)}
+					</nav>
+				</div>
+			</footer>
+		)}
 	</body>
 </html>

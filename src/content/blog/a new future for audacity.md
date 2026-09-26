@@ -1,9 +1,8 @@
 ---
 title: "A new future for Audacity"
-description: "Meet Soundscaper, a non-profit web-based reimplementatino of Audacity 4."
+description: "Meet Soundscaper, a non-profit web-based reimplementation of Audacity 4."
 date: 2026-09-26
 # Update the date before publishing.
-language: en
 draft: false
 ---
 

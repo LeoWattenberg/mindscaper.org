@@ -1,55 +1,37 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BrandMark from './BrandMark.astro';
-import { blogHref } from '../lib/blog';
-import type { Locale } from '../i18n/content';
 
 interface Props {
-	locale: Locale;
 	title: string;
 	description: string;
 	canonicalPath: string;
 	index?: boolean;
 }
 
-const { locale, title, description, canonicalPath, index = false } = Astro.props;
-const homeHref = locale === 'de' ? '/de/' : '/';
-const otherLocale = locale === 'de' ? 'en' : 'de';
-const copy = locale === 'de'
-	? { home: 'Startseite', blog: 'Blog', language: 'English', legal: 'Impressum & Datenschutz', legalHref: '/de/impressum/' }
-	: { home: 'Home', blog: 'Blog', language: 'Deutsch', legal: 'Legal & privacy', legalHref: '/legal/' };
+const { title, description, canonicalPath, index = false } = Astro.props;
 ---
 
-<BaseLayout
-	lang={locale}
-	title={title}
-	description={description}
-	canonicalPath={canonicalPath}
-	enPath={index ? '/blog/' : undefined}
-	dePath={index ? '/de/blog/' : undefined}
->
+<BaseLayout title={title} description={description} canonicalPath={canonicalPath}>
 	<header class="subpage-header">
 		<div class="container header-inner">
-			<a class="brand-link" href={homeHref} aria-label="Mindscaper — Home"><BrandMark /></a>
-			<nav class="blog-nav" aria-label={locale === 'de' ? 'Hauptnavigation' : 'Main navigation'}>
-				<a href={homeHref}>{copy.home}</a>
-				<a href={blogHref(locale)} aria-current={index ? 'page' : undefined}>{copy.blog}</a>
+			<a class="brand-link" href="/" aria-label="Mindscaper — Home"><BrandMark /></a>
+			<nav class="subpage-nav" aria-label="Main navigation">
+				<a href="/#projects">Projects</a>
+				<a href="/#about">About</a>
+				<a href="/join/">Get involved</a>
+				<a href="/blog/" aria-current={index ? 'page' : undefined}>Blog</a>
 			</nav>
-			<a class="language-switch" href={blogHref(otherLocale)} lang={otherLocale} hreflang={otherLocale}>
-				<span class="language-long">{copy.language}</span>
-				<span class="language-short" aria-hidden="true">{otherLocale.toUpperCase()}</span>
-				<svg viewBox="0 0 16 16" aria-hidden="true"><path d="m5 3 5 5-5 5" /></svg>
-			</a>
 		</div>
 	</header>
-	<main id="main"><slot /></main>
-	<footer class="site-footer blog-footer">
-		<div class="container footer-bottom">
+	<main id="main" class="page-main"><slot /></main>
+	<footer class="site-footer">
+		<div class="container footer-inner">
 			<p>© {new Date().getFullYear()} Mindscaper</p>
-			<div class="blog-footer-links">
-				<a href={homeHref}>{copy.home}</a>
-				<a href={copy.legalHref}>{copy.legal}</a>
-			</div>
+			<nav aria-label="Footer navigation">
+				<a href="/">Home</a>
+				<a href="/legal/">Legal & privacy</a>
+			</nav>
 		</div>
 	</footer>
 </BaseLayout>

@@ -1,42 +1,30 @@
 ---
 import BlogShell from './BlogShell.astro';
 import { blogHref, getPublishedPosts } from '../lib/blog';
-import type { Locale } from '../i18n/content';
 
-interface Props { locale: Locale }
-const { locale } = Astro.props;
-const posts = await getPublishedPosts(locale);
-const copy = locale === 'de'
-	? { title: 'Blog', eyebrow: 'Aus dem Mindscaper-Blog', intro: 'Neuigkeiten, Einblicke und Gedanken zu offenen Kreativwerkzeugen.', empty: 'Hier erscheinen bald Beiträge.', read: 'Beitrag lesen', meta: 'Neuigkeiten und Einblicke von Mindscaper.' }
-	: { title: 'Blog', eyebrow: 'From Mindscaper', intro: 'Updates, ideas, and notes on building open creative tools.', empty: 'Posts will appear here soon.', read: 'Read post', meta: 'Updates and ideas from Mindscaper.' };
+const posts = await getPublishedPosts();
 ---
 
-<BlogShell locale={locale} title={`${copy.title} — Mindscaper`} description={copy.meta} canonicalPath={blogHref(locale)} index>
-	<section class="blog-hero">
-		<div class="container">
-			<p class="eyebrow"><span></span>{copy.eyebrow}</p>
-			<h1>{copy.title}</h1>
-			<p>{copy.intro}</p>
-		</div>
-	</section>
-	<section class="blog-list-section" aria-label={locale === 'de' ? 'Beiträge' : 'Posts'}>
-		<div class="container">
-			{posts.length === 0 ? (
-				<p class="blog-empty">{copy.empty}</p>
-			) : (
-				<ol class="blog-list">
-					{posts.map((post) => (
-						<li>
-							<article class="blog-card">
-								<time datetime={post.data.date.toISOString()}>{post.data.date.toLocaleDateString(locale === 'de' ? 'de-DE' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</time>
-								<h2><a href={blogHref(locale, post.id)}>{post.data.title}</a></h2>
-								<p>{post.data.description}</p>
-								<a class="blog-read" href={blogHref(locale, post.id)}>{copy.read} <span aria-hidden="true">→</span></a>
-							</article>
-						</li>
-					))}
-				</ol>
-			)}
-		</div>
-	</section>
+<BlogShell title="Blog — Mindscaper" description="News and notes from Mindscaper." canonicalPath={blogHref()} index>
+	<div class="container">
+		<header class="page-intro">
+			<h1>Blog</h1>
+			<p>News and notes from Mindscaper.</p>
+		</header>
+		{posts.length === 0 ? (
+			<p>Posts will appear here soon.</p>
+		) : (
+			<ol class="post-list">
+				{posts.map((post) => (
+					<li>
+						<article class="post-summary">
+							<time datetime={post.data.date.toISOString()}>{post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</time>
+							<h2><a href={blogHref(post.id)}>{post.data.title}</a></h2>
+							<p>{post.data.description}</p>
+						</article>
+					</li>
+				))}
+			</ol>
+		)}
+	</div>
 </BlogShell>

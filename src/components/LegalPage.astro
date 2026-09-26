@@ -1,286 +1,115 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BrandMark from './BrandMark.astro';
-import type { Locale } from '../i18n/content';
 
-interface Props {
-	locale: Locale;
-}
-
-interface LegalCopy {
-	metaTitle: string;
-	metaDescription: string;
-	back: string;
-	language: string;
-	languageShort: string;
-	languageHref: string;
-	eyebrow: string;
-	title: string;
-	intro: string;
-	navLabel: string;
-	nav: { imprint: string; status: string; privacy: string };
-	imprintTitle: string;
-	legalBasis: string;
-	contact: string;
-	vat: string;
-	register: string;
-	responsible: string;
-	statusTitle: string;
-	statusBody: string;
-	statusStrong: string;
-	privacyTitle: string;
-	privacyIntro: string;
-	controllerTitle: string;
-	controllerBody: string;
-	hostingTitle: string;
-	hostingBody: string;
-	hostingPurpose: string;
-	contactTitle: string;
-	contactBody: string;
-	externalTitle: string;
-	externalBody: string;
-	cookiesTitle: string;
-	cookiesBody: string;
-	rightsTitle: string;
-	rightsBody: string;
-	complaintTitle: string;
-	complaintBody: string;
-	retentionTitle: string;
-	retentionBody: string;
-	updatesTitle: string;
-	updatesBody: string;
-	footer: string;
-}
-
-const legalCopy: Record<Locale, LegalCopy> = {
-	en: {
-		metaTitle: 'Legal notice & privacy — Mindscaper',
-		metaDescription: 'Legal notice and privacy information for mindscaper.org.',
-		back: 'Back to Mindscaper',
-		language: 'Deutsch',
-		languageShort: 'DE',
-		languageHref: '/de/impressum/',
-		eyebrow: 'Transparency matters',
-		title: 'Legal notice & privacy',
-		intro: 'Who is currently responsible for Mindscaper and what happens to data when you visit this website.',
-		navLabel: 'On this page',
-		nav: { imprint: 'Legal notice', status: 'Mindscaper’s status', privacy: 'Privacy' },
-		imprintTitle: 'Legal notice',
-		legalBasis: 'Information pursuant to § 5 DDG:',
-		contact: 'Email and website',
-		vat: 'VAT identification number',
-		register: 'Commercial register',
-		responsible: 'Responsible for editorial content pursuant to § 18 (2) MStV: Martin Koytek, address as above.',
-		statusTitle: 'Mindscaper’s current status',
-		statusStrong: 'Mindscaper is a nonprofit initiative in formation.',
-		statusBody:
-			'Until a separate legal entity has been established, Koytek Wattenberg Media UG (haftungsbeschränkt) is the legal body responsible for this website and the initiative. A Danish nonprofit association (forening) is intended to be founded and take over this responsibility in the future. It does not yet exist and is not represented here as an established entity.',
-		privacyTitle: 'Privacy information',
-		privacyIntro:
-			'We designed this website to collect as little data as possible. It contains no analytics, advertising, embedded third-party media, account system, contact form, or optional cookies.',
-		controllerTitle: 'Controller',
-		controllerBody:
-			'The controller for data processing connected with this website is Koytek Wattenberg Media UG (haftungsbeschränkt), Spiekerskamp 26, 45772 Marl, Germany. You can contact us at martin@kw.media.',
-		hostingTitle: 'Hosting and server logs',
-		hostingBody:
-			'This static website is hosted using GitHub Pages, a service provided by GitHub, Inc. When a GitHub Pages site is visited, GitHub logs and stores the visitor’s IP address for security purposes. GitHub may also process technically necessary request information under its own terms and privacy statement.',
-		hostingPurpose:
-			'This processing is necessary to deliver the website securely and reliably. Mindscaper does not receive or use these server logs to build visitor profiles.',
-		contactTitle: 'Contact by email',
-		contactBody:
-			'If you contact us by email, we process the information you provide to respond to your enquiry and any follow-up questions. We delete it when it is no longer needed for that purpose, unless legal retention obligations apply.',
-		externalTitle: 'External links',
-		externalBody:
-			'This website links to Discourse, GitHub, Soundscaper, and Framescaper. When you follow an external link, the receiving service processes your request according to its own privacy terms. No content from those services is embedded on this site.',
-		cookiesTitle: 'Cookies and analytics',
-		cookiesBody:
-			'Mindscaper does not set cookies or use local storage, tracking pixels, analytics services, advertising networks, or consent-gated content on this website. Therefore, no cookie consent banner is displayed.',
-		rightsTitle: 'Your rights',
-		rightsBody:
-			'Where the legal requirements are met, you may request access, correction, deletion, restriction of processing, data portability, or object to certain processing. Where processing is based on consent, you may withdraw that consent for the future.',
-		complaintTitle: 'Right to complain',
-		complaintBody:
-			'You have the right to lodge a complaint with a competent data protection supervisory authority if you believe that personal data is being processed unlawfully.',
-		retentionTitle: 'Retention',
-		retentionBody:
-			'Personal data handled directly by the responsible body is kept only for as long as necessary for its stated purpose or as required by statutory retention obligations. GitHub determines the retention of its own hosting logs.',
-		updatesTitle: 'Changes to this notice',
-		updatesBody:
-			'We will update this information if the website, the services it uses, the responsible legal entity, or applicable requirements change.',
-		footer: 'Current legal body: Koytek Wattenberg Media UG (haftungsbeschränkt)',
-	},
-	de: {
-		metaTitle: 'Impressum & Datenschutz — Mindscaper',
-		metaDescription: 'Impressum und Datenschutzhinweise für mindscaper.org.',
-		back: 'Zurück zu Mindscaper',
-		language: 'English',
-		languageShort: 'EN',
-		languageHref: '/legal/',
-		eyebrow: 'Transparenz ist wichtig',
-		title: 'Impressum & Datenschutz',
-		intro: 'Wer derzeit für Mindscaper verantwortlich ist und was beim Besuch dieser Website mit Daten geschieht.',
-		navLabel: 'Auf dieser Seite',
-		nav: { imprint: 'Impressum', status: 'Status von Mindscaper', privacy: 'Datenschutz' },
-		imprintTitle: 'Impressum',
-		legalBasis: 'Angaben gemäß § 5 DDG:',
-		contact: 'E-Mail und Website',
-		vat: 'Umsatzsteuer-Identifikationsnummer',
-		register: 'Handelsregister',
-		responsible: 'Inhaltlich verantwortlich gemäß § 18 Abs. 2 MStV: Martin Koytek, Anschrift wie oben.',
-		statusTitle: 'Derzeitiger Status von Mindscaper',
-		statusStrong: 'Mindscaper ist eine gemeinnützige Initiative in Gründung.',
-		statusBody:
-			'Bis zur Gründung einer eigenen Rechtspersönlichkeit ist die Koytek Wattenberg Media UG (haftungsbeschränkt) der für diese Website und die Initiative verantwortliche Rechtsträger. Zukünftig soll ein gemeinnütziger dänischer Verein (Forening) gegründet werden und diese Verantwortung übernehmen. Dieser Verein besteht noch nicht und wird hier nicht als bereits gegründete Organisation dargestellt.',
-		privacyTitle: 'Datenschutzhinweise',
-		privacyIntro:
-			'Wir haben diese Website so gestaltet, dass möglichst wenige Daten anfallen. Sie enthält keine Analysewerkzeuge, Werbung, eingebetteten Medien Dritter, Benutzerkonten, Kontaktformulare oder optionalen Cookies.',
-		controllerTitle: 'Verantwortlicher',
-		controllerBody:
-			'Verantwortlich für die mit dieser Website verbundene Datenverarbeitung ist die Koytek Wattenberg Media UG (haftungsbeschränkt), Spiekerskamp 26, 45772 Marl, Deutschland. Sie erreichen uns unter martin@kw.media.',
-		hostingTitle: 'Hosting und Server-Logfiles',
-		hostingBody:
-			'Diese statische Website wird über GitHub Pages gehostet, einen Dienst von GitHub, Inc. Beim Besuch einer GitHub-Pages-Website protokolliert und speichert GitHub die IP-Adresse der besuchenden Person zu Sicherheitszwecken. GitHub kann außerdem technisch notwendige Anfrageinformationen nach eigenen Bedingungen und Datenschutzhinweisen verarbeiten.',
-		hostingPurpose:
-			'Diese Verarbeitung ist für die sichere und zuverlässige Bereitstellung der Website erforderlich. Mindscaper erhält oder nutzt diese Serverprotokolle nicht, um Besucherprofile zu erstellen.',
-		contactTitle: 'Kontakt per E-Mail',
-		contactBody:
-			'Wenn Sie uns per E-Mail kontaktieren, verarbeiten wir Ihre Angaben, um Ihre Anfrage und mögliche Rückfragen zu beantworten. Wir löschen sie, sobald sie hierfür nicht mehr erforderlich sind, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen.',
-		externalTitle: 'Externe Links',
-		externalBody:
-			'Diese Website verlinkt auf Discourse, GitHub, Soundscaper und Framescaper. Wenn Sie einem externen Link folgen, verarbeitet der jeweilige Dienst Ihre Anfrage nach seinen eigenen Datenschutzbestimmungen. Inhalte dieser Dienste werden auf dieser Website nicht eingebettet.',
-		cookiesTitle: 'Cookies und Analyse',
-		cookiesBody:
-			'Mindscaper setzt auf dieser Website keine Cookies oder lokalen Speicher ein und nutzt keine Tracking-Pixel, Analysedienste, Werbenetzwerke oder einwilligungspflichtigen Inhalte. Daher wird kein Cookie-Banner angezeigt.',
-		rightsTitle: 'Ihre Rechte',
-		rightsBody:
-			'Im Rahmen der gesetzlichen Voraussetzungen können Sie Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung oder Datenübertragbarkeit verlangen und bestimmten Verarbeitungen widersprechen. Soweit eine Verarbeitung auf Ihrer Einwilligung beruht, können Sie diese für die Zukunft widerrufen.',
-		complaintTitle: 'Beschwerderecht',
-		complaintBody:
-			'Sie haben das Recht, sich bei einer zuständigen Datenschutzaufsichtsbehörde zu beschweren, wenn Sie der Ansicht sind, dass personenbezogene Daten rechtswidrig verarbeitet werden.',
-		retentionTitle: 'Speicherdauer',
-		retentionBody:
-			'Vom verantwortlichen Rechtsträger direkt verarbeitete personenbezogene Daten werden nur so lange gespeichert, wie es für den genannten Zweck erforderlich ist oder gesetzliche Aufbewahrungspflichten bestehen. Über die Speicherdauer eigener Hosting-Protokolle entscheidet GitHub.',
-		updatesTitle: 'Änderungen dieser Hinweise',
-		updatesBody:
-			'Wir aktualisieren diese Informationen, wenn sich die Website, eingesetzte Dienste, der verantwortliche Rechtsträger oder rechtliche Anforderungen ändern.',
-		footer: 'Derzeitiger Rechtsträger: Koytek Wattenberg Media UG (haftungsbeschränkt)',
-	},
+const copy = {
+	metaTitle: 'Legal notice & privacy — Mindscaper',
+	metaDescription: 'Legal notice and privacy information for mindscaper.org.',
+	title: 'Legal notice & privacy',
+	intro: 'Who operates this website and what happens to data when you visit.',
+	navLabel: 'On this page',
+	nav: { imprint: 'Legal notice', privacy: 'Privacy' },
+	imprintTitle: 'Site operator',
+	contact: 'Contact',
+	privacyTitle: 'Privacy information',
+	privacyIntro:
+		'We designed this website to collect as little data as possible. It contains no analytics, advertising, embedded third-party media, account system, contact form, or optional cookies.',
+	controllerTitle: 'Controller',
+	controllerBody:
+		'Mindscaper, a non-profit association at Kirke Alle 5a, 6400 Sønderborg, Denmark, is the controller for data processing connected with this website. You can reach the association at team@mindscaper.org.',
+	hostingTitle: 'Hosting and server logs',
+	hostingBody:
+		'This static website is hosted using GitHub Pages, a service provided by GitHub, Inc. When a GitHub Pages site is visited, GitHub logs and stores the visitor’s IP address for security purposes. GitHub may also process technically necessary request information under its own terms and privacy statement.',
+	hostingPurpose:
+		'This processing is necessary to deliver the website securely and reliably. Mindscaper does not receive or use these server logs to build visitor profiles.',
+	contactTitle: 'Contact by email',
+	contactBody:
+		'If you contact us by email, we process the information you provide to respond to your enquiry and any follow-up questions. We delete it when it is no longer needed for that purpose, unless legal retention obligations apply.',
+	externalTitle: 'External links',
+	externalBody:
+		'This website links to Discourse, GitHub, Soundscaper, and Framescaper. When you follow an external link, the receiving service processes your request according to its own privacy terms. No content from those services is embedded on this site.',
+	cookiesTitle: 'Cookies and analytics',
+	cookiesBody:
+		'Mindscaper does not set cookies or use local storage, tracking pixels, analytics services, advertising networks, or consent-gated content on this website. Therefore, no cookie consent banner is displayed.',
+	rightsTitle: 'Your rights',
+	rightsBody:
+		'Where the legal requirements are met, you may request access, correction, deletion, restriction of processing, data portability, or object to certain processing. Where processing is based on consent, you may withdraw that consent for the future.',
+	complaintTitle: 'Right to complain',
+	complaintBody:
+		'You have the right to lodge a complaint with a competent data protection supervisory authority if you believe that personal data is being processed unlawfully.',
+	retentionTitle: 'Retention',
+	retentionBody:
+		'Personal data handled directly by the responsible body is kept only for as long as necessary for its stated purpose or as required by statutory retention obligations. GitHub determines the retention of its own hosting logs.',
+	updatesTitle: 'Changes to this notice',
+	updatesBody:
+		'We will update this information if the website, the services it uses, the responsible legal entity, or applicable requirements change.',
 };
-
-const { locale } = Astro.props;
-const copy = legalCopy[locale];
-const homeHref = locale === 'de' ? '/de/' : '/';
 ---
 
-<BaseLayout
-	lang={locale}
-	title={copy.metaTitle}
-	description={copy.metaDescription}
-	canonicalPath={locale === 'de' ? '/de/impressum/' : '/legal/'}
-	enPath="/legal/"
-	dePath="/de/impressum/"
->
+<BaseLayout title={copy.metaTitle} description={copy.metaDescription} canonicalPath="/legal/">
 	<header class="subpage-header">
 		<div class="container header-inner">
-			<a class="brand-link" href={homeHref} aria-label="Mindscaper — Home"><BrandMark /></a>
-			<div class="subpage-actions">
-				<a class="back-link" href={homeHref}>← {copy.back}</a>
-				<a class="language-switch" href={copy.languageHref} lang={locale === 'de' ? 'en' : 'de'} hreflang={locale === 'de' ? 'en' : 'de'}>
-					<span class="language-long">{copy.language}</span>
-					<span class="language-short" aria-hidden="true">{copy.languageShort}</span>
-					<svg viewBox="0 0 16 16" aria-hidden="true"><path d="m5 3 5 5-5 5" /></svg>
-				</a>
-			</div>
+			<a class="brand-link" href="/" aria-label="Mindscaper — Home"><BrandMark /></a>
+			<nav class="subpage-nav" aria-label="Main navigation">
+				<a href="/#projects">Projects</a>
+				<a href="/#about">About</a>
+				<a href="/join/">Get involved</a>
+				<a href="/blog/">Blog</a>
+			</nav>
 		</div>
 	</header>
-
-	<main id="main">
-		<section class="legal-hero">
-			<div class="container">
-				<p class="eyebrow"><span></span>{copy.eyebrow}</p>
+	<main id="main" class="page-main">
+		<div class="container">
+			<header class="page-intro">
 				<h1>{copy.title}</h1>
 				<p>{copy.intro}</p>
-			</div>
-		</section>
-
-		<div class="container legal-layout">
+			</header>
+			<div class="legal-layout">
 			<nav class="legal-nav" aria-label={copy.navLabel}>
 				<a href="#imprint">{copy.nav.imprint}</a>
-				<a href="#status">{copy.nav.status}</a>
 				<a href="#privacy">{copy.nav.privacy}</a>
 			</nav>
-
 			<div class="legal-content">
 				<section id="imprint">
 					<h2>{copy.imprintTitle}</h2>
-					<p>{copy.legalBasis}</p>
-					<p>
-						<strong>Koytek Wattenberg Media UG (haftungsbeschränkt)</strong><br />
-						Spiekerskamp 26<br />
-						45772 Marl<br />
-						{locale === 'de' ? 'Deutschland' : 'Germany'}
-					</p>
+					<p><strong>Mindscaper</strong><br />Non-profit association<br />Kirke Alle 5a<br />6400 Sønderborg<br />Denmark</p>
 					<h3>{copy.contact}</h3>
-					<p>
-						<a href="mailto:martin@kw.media">martin@kw.media</a>
-					</p>
-					<p><strong>{copy.vat}:</strong> DE34 2553 512</p>
-					<p><strong>{copy.register}:</strong> Amtsgericht Gelsenkirchen, HRB 18975</p>
-					<p>{copy.responsible}</p>
+					<p><a href="mailto:team@mindscaper.org">team@mindscaper.org</a></p>
 				</section>
-
-				<section id="status">
-					<h2>{copy.statusTitle}</h2>
-					<p class="legal-notice"><strong>{copy.statusStrong}</strong>{copy.statusBody}</p>
-				</section>
-
 				<section id="privacy">
 					<h2>{copy.privacyTitle}</h2>
 					<p>{copy.privacyIntro}</p>
-
 					<h3>{copy.controllerTitle}</h3>
 					<p>{copy.controllerBody}</p>
-
 					<h3>{copy.hostingTitle}</h3>
 					<p>{copy.hostingBody} <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub Privacy Statement</a>.</p>
 					<p>{copy.hostingPurpose}</p>
-
 					<h3>{copy.contactTitle}</h3>
 					<p>{copy.contactBody}</p>
-
 					<h3>{copy.externalTitle}</h3>
 					<p>{copy.externalBody}</p>
-
 					<h3>{copy.cookiesTitle}</h3>
 					<p>{copy.cookiesBody}</p>
-
 					<h3>{copy.rightsTitle}</h3>
 					<p>{copy.rightsBody}</p>
-
 					<h3>{copy.complaintTitle}</h3>
 					<p>{copy.complaintBody}</p>
-
 					<h3>{copy.retentionTitle}</h3>
 					<p>{copy.retentionBody}</p>
-
 					<h3>{copy.updatesTitle}</h3>
 					<p>{copy.updatesBody}</p>
 				</section>
 			</div>
+			</div>
 		</div>
 	</main>
-
 	<footer class="site-footer">
-		<div class="container footer-grid">
-			<div class="footer-brand">
-				<a class="brand-link brand-link-footer" href={homeHref} aria-label="Mindscaper — Home"><BrandMark /></a>
-				<p>{copy.footer}</p>
-			</div>
-			<div class="footer-column">
-				<h2>{locale === 'de' ? 'Projekt' : 'Project'}</h2>
-				<a href={homeHref}>{copy.back}</a>
-				<a href="https://github.com/LeoWattenberg/mindscaper.org">GitHub</a>
-			</div>
+		<div class="container footer-inner">
+			<p>© {new Date().getFullYear()} Mindscaper</p>
+			<nav aria-label="Footer navigation">
+				<a href="/">Home</a>
+				<a href="/legal/" aria-current="page">Legal & privacy</a>
+			</nav>
 		</div>
 	</footer>
 </BaseLayout>

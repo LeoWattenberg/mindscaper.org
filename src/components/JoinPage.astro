@@ -1,116 +1,47 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BrandMark from './BrandMark.astro';
-import type { Locale } from '../i18n/content';
-
-interface Props {
-	locale: Locale;
-}
-
-const { locale } = Astro.props;
-const isGerman = locale === 'de';
-const homeHref = isGerman ? '/de/' : '/';
-const joinHref = isGerman ? '/de/join/' : '/join/';
-const otherJoinHref = isGerman ? '/join/' : '/de/join/';
-const copy = isGerman
-	? {
-		metaTitle: 'Mitmachen — Mindscaper',
-		metaDescription: 'Werde Teil der Mindscaper-Community auf Discourse oder bringe dich auf GitHub ein.',
-		home: 'Startseite',
-		join: 'Mitmachen',
-		language: 'English',
-		eyebrow: 'Mach mit',
-		title: 'Gestalte Mindscaper mit.',
-		intro: 'Ob du Ideen teilen, die Werkzeuge testen oder Code beitragen möchtest: Hier kannst du anfangen.',
-		communityLabel: 'Community',
-		communityTitle: 'Komm ins Gespräch',
-		communityBody: 'Tausche dich mit anderen aus, stelle Fragen und teile deine Ideen im Mindscaper-Forum.',
-		communityCta: 'Zum Forum',
-		githubLabel: 'Open Source',
-		githubTitle: 'Entwickle mit',
-		githubBody: 'Sieh dir den Code an, melde Probleme oder beteilige dich an der Entwicklung auf GitHub.',
-		githubCta: 'Zu GitHub',
-		legal: 'Impressum & Datenschutz',
-		legalHref: '/de/impressum/',
-	}
-	: {
-		metaTitle: 'Join us — Mindscaper',
-		metaDescription: 'Join the Mindscaper community on Discourse or contribute on GitHub.',
-		home: 'Home',
-		join: 'Join us',
-		language: 'Deutsch',
-		eyebrow: 'Get involved',
-		title: 'Help shape Mindscaper.',
-		intro: 'Whether you want to share ideas, test the tools, or contribute code, here is where to start.',
-		communityLabel: 'Community',
-		communityTitle: 'Join the conversation',
-		communityBody: 'Meet others, ask questions, and share your ideas in the Mindscaper forum.',
-		communityCta: 'Visit the forum',
-		githubLabel: 'Open source',
-		githubTitle: 'Build with us',
-		githubBody: 'Explore the code, report issues, or contribute to development on GitHub.',
-		githubCta: 'Visit GitHub',
-		legal: 'Legal & privacy',
-		legalHref: '/legal/',
-	};
 ---
 
-<BaseLayout
-	lang={locale}
-	title={copy.metaTitle}
-	description={copy.metaDescription}
-	canonicalPath={joinHref}
-	enPath="/join/"
-	dePath="/de/join/"
->
+<BaseLayout title="Get involved — Mindscaper" description="Join the Mindscaper community or contribute to its open source projects." canonicalPath="/join/">
 	<header class="subpage-header">
 		<div class="container header-inner">
-			<a class="brand-link" href={homeHref} aria-label="Mindscaper — Home"><BrandMark /></a>
-			<nav class="blog-nav" aria-label={isGerman ? 'Hauptnavigation' : 'Main navigation'}>
-				<a href={homeHref}>{copy.home}</a>
-				<a href={joinHref} aria-current="page">{copy.join}</a>
+			<a class="brand-link" href="/" aria-label="Mindscaper — Home"><BrandMark /></a>
+			<nav class="subpage-nav" aria-label="Main navigation">
+				<a href="/#projects">Projects</a>
+				<a href="/#about">About</a>
+				<a href="/join/" aria-current="page">Get involved</a>
+				<a href="/blog/">Blog</a>
 			</nav>
-			<a class="language-switch" href={otherJoinHref} lang={isGerman ? 'en' : 'de'} hreflang={isGerman ? 'en' : 'de'}>
-				<span class="language-long">{copy.language}</span>
-				<span class="language-short" aria-hidden="true">{isGerman ? 'EN' : 'DE'}</span>
-				<svg viewBox="0 0 16 16" aria-hidden="true"><path d="m5 3 5 5-5 5" /></svg>
-			</a>
 		</div>
 	</header>
-	<main id="main">
-		<section class="join-page-hero container">
-			<p class="eyebrow"><span></span>{copy.eyebrow}</p>
-			<h1>{copy.title}</h1>
-			<p>{copy.intro}</p>
-		</section>
-		<section class="join-page-options container" aria-label={copy.join}>
-			<article class="join-option join-option-community">
-				<p class="project-kind">{copy.communityLabel}</p>
-				<h2>{copy.communityTitle}</h2>
-				<p>{copy.communityBody}</p>
-				<a class="project-link" href="https://mindscaper.discourse.group/">
-					{copy.communityCta}
-					<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12m-5-5 5 5-5 5" /></svg>
-				</a>
-			</article>
-			<article class="join-option join-option-github">
-				<p class="project-kind">{copy.githubLabel}</p>
-				<h2>{copy.githubTitle}</h2>
-				<p>{copy.githubBody}</p>
-				<a class="project-link" href="https://github.com/LeoWattenberg/Soundscaper">
-					{copy.githubCta}
-					<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12m-5-5 5 5-5 5" /></svg>
-				</a>
-			</article>
-		</section>
+	<main id="main" class="page-main">
+		<div class="container">
+			<header class="page-intro">
+				<h1>Get involved</h1>
+				<p>Mindscaper is an open source project. You can join the conversation, try the tools, or help build them.</p>
+			</header>
+			<ul class="join-links">
+				<li>
+					<h2>Talk with the community</h2>
+					<p>Share ideas and questions on our forum.</p>
+					<a href="https://mindscaper.discourse.group/">Visit the forum ↗</a>
+				</li>
+				<li>
+					<h2>Contribute code</h2>
+					<p>Explore Soundscaper’s source, report issues, and contribute on GitHub.</p>
+					<a href="https://github.com/LeoWattenberg/Soundscaper">View Soundscaper on GitHub ↗</a>
+				</li>
+			</ul>
+		</div>
 	</main>
-	<footer class="site-footer blog-footer">
-		<div class="container footer-bottom">
+	<footer class="site-footer">
+		<div class="container footer-inner">
 			<p>© {new Date().getFullYear()} Mindscaper</p>
-			<div class="blog-footer-links">
-				<a href={homeHref}>{copy.home}</a>
-				<a href={copy.legalHref}>{copy.legal}</a>
-			</div>
+			<nav aria-label="Footer navigation">
+				<a href="/">Home</a>
+				<a href="/legal/">Legal & privacy</a>
+			</nav>
 		</div>
 	</footer>
 </BaseLayout>

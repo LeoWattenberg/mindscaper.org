@@ -1,6 +1,6 @@
 # Mindscaper.org
 
-The multilingual public website for Mindscaper, a nonprofit creative-software initiative in formation. The site introduces Mindscaper's mission and its first projects, [Soundscaper](https://soundscaper.org) and [Framescaper](https://framescaper.org).
+The English-language website for Mindscaper, a nonprofit association and open source project. It introduces Mindscaper and its first tools, [Soundscaper](https://soundscaper.org) and [Framescaper](https://framescaper.org).
 
 ## Local development
 
@@ -27,15 +27,17 @@ npm run build
 
 The generated files are written to `dist/`.
 
-## Languages
+## Pages
 
-English is served at `/` and German at `/de/`. Translations are kept in a typed content dictionary in `src/i18n/content.ts`; no i18n plugin or client-side locale detection is used.
+The website is currently English-only. Its main pages are `/`, `/join/`, `/blog/`, and `/legal/`. The bylaws are at `/bylaws/`.
 
-Equivalent legal and privacy pages are available at `/legal/` and `/de/impressum/`.
+## Visual assets
+
+The product screenshots in `public/screenshots/` are real captures from the Soundscaper project. Jost and Lora are served locally from `public/fonts/`; their OFL license files are included there.
 
 ## Blog posts
 
-The blog indexes are at `/blog/` and `/de/blog/`. Copy `src/content/blog/_template.md` to `src/content/blog/your-post-slug.md`, then fill in the title, description, date, language (`en` or `de`), and Markdown body. The filename becomes the post URL. Set `draft: false` when the post is ready; drafts do not appear in the indexes or the built site. Posts are shown newest first. English posts appear under `/blog/`, and German posts under `/de/blog/`.
+The blog index is at `/blog/`. Copy `src/content/blog/_template.md` to `src/content/blog/your-post-slug.md`, then fill in the title, description, date, and Markdown body. The filename becomes the post URL. Set `draft: false` when the post is ready; drafts do not appear in the index or the built site. Posts are shown newest first.
 
 ## Deployment
 
@@ -45,4 +47,4 @@ In the GitHub repository settings, select **GitHub Actions** as the Pages source
 
 ## Privacy
 
-The site is fully static. It contains no analytics, advertising, embeds, forms, cookies, local storage, or external font requests.
+The site is static and contains no analytics, advertising, embeds, forms, cookies, or local storage.

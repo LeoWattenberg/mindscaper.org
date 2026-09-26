@@ -3,7 +3,6 @@ title: ""
 description: ""
 date: 2026-09-26
 # Update the date before publishing.
-language: en
 draft: true
 ---
 

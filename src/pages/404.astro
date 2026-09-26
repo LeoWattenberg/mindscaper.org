@@ -1,28 +1,25 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import BrandMark from '../components/BrandMark.astro';
 ---
 
-<BaseLayout
-	lang="en"
-	title="Page not found — Mindscaper"
-	description="This page could not be found. Diese Seite wurde nicht gefunden."
-	canonicalPath="/404.html"
-	enPath="/404.html"
-	dePath="/404.html"
-	noindex
->
+<BaseLayout title="Page not found — Mindscaper" description="This page could not be found." canonicalPath="/404.html" noindex>
+	<header class="subpage-header">
+		<div class="container header-inner">
+			<a class="brand-link" href="/" aria-label="Mindscaper — Home"><BrandMark /></a>
+			<nav class="subpage-nav" aria-label="Main navigation">
+				<a href="/#projects">Projects</a>
+				<a href="/#about">About</a>
+				<a href="/join/">Get involved</a>
+				<a href="/blog/">Blog</a>
+			</nav>
+		</div>
+	</header>
 	<main id="main" class="not-found">
-		<div class="not-found-inner">
-			<p class="not-found-code" aria-hidden="true">404</p>
-			<h1>Lost between sound and frame?</h1>
-			<div class="not-found-copy">
-				<p lang="en">The page you were looking for is not here. Return to Mindscaper and keep exploring.</p>
-				<p lang="de">Die gesuchte Seite ist nicht hier. Kehre zu Mindscaper zurück und entdecke weiter.</p>
-			</div>
-			<div class="not-found-actions">
-				<a class="button button-light" href="/">English home</a>
-				<a class="button button-light" href="/de/" lang="de">Deutsche Startseite</a>
-			</div>
+		<div class="container">
+			<h1>Page not found</h1>
+			<p>The page you were looking for is not here.</p>
+			<a href="/">Go to the homepage</a>
 		</div>
 	</main>
 </BaseLayout>

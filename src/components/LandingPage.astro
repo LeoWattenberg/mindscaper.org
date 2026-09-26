@@ -28,7 +28,8 @@ const year = new Date().getFullYear();
 			<nav class="main-nav" aria-label={copy.nav.ariaLabel}>
 				<a href="#mission">{copy.nav.mission}</a>
 				<a href="#projects">{copy.nav.projects}</a>
-				<a href="#join">{copy.nav.join}</a>
+				<a href={locale === 'de' ? '/de/join/' : '/join/'}>{copy.nav.join}</a>
+				<a href={locale === 'de' ? '/de/blog/' : '/blog/'}>{copy.nav.blog}</a>
 			</nav>
 			<a class="language-switch" href={copy.language.href} lang={locale === 'de' ? 'en' : 'de'} hreflang={locale === 'de' ? 'en' : 'de'}>
 				<span class="language-long">{copy.language.label}</span>
@@ -148,7 +149,7 @@ const year = new Date().getFullYear();
 					<ul class="role-list" aria-label={locale === 'de' ? 'Möglichkeiten mitzumachen' : 'Ways to contribute'}>
 						{copy.join.roles.map((role) => <li>{role}</li>)}
 					</ul>
-					<a class="button button-light" href="https://github.com/LeoWattenberg/Soundscaper">
+					<a class="button button-light" href={locale === 'de' ? '/de/join/' : '/join/'}>
 						{copy.join.cta}
 						<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12m-5-5 5 5-5 5" /></svg>
 					</a>
@@ -179,6 +180,7 @@ const year = new Date().getFullYear();
 				<a href="https://github.com/LeoWattenberg/Soundscaper">{copy.footer.github}</a>
 				<a href="https://github.com/LeoWattenberg/mindscaper.org">{copy.footer.source}</a>
 				<a href={copy.footer.legalHref}>{copy.footer.legal}</a>
+				<a href={locale === 'de' ? '/de/blog/' : '/blog/'}>{copy.nav.blog}</a>
 			</div>
 		</div>
 		<div class="container footer-bottom">

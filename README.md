@@ -33,6 +33,10 @@ English is served at `/` and German at `/de/`. Translations are kept in a typed 
 
 Equivalent legal and privacy pages are available at `/legal/` and `/de/impressum/`.
 
+## Blog posts
+
+The blog indexes are at `/blog/` and `/de/blog/`. Copy `src/content/blog/_template.md` to `src/content/blog/your-post-slug.md`, then fill in the title, description, date, language (`en` or `de`), and Markdown body. The filename becomes the post URL. Set `draft: false` when the post is ready; drafts do not appear in the indexes or the built site. Posts are shown newest first. English posts appear under `/blog/`, and German posts under `/de/blog/`.
+
 ## Deployment
 
 Pushes to `main` are built and deployed through the workflow in `.github/workflows/deploy.yml`. The custom domain is configured as `mindscaper.org` through `public/CNAME` and `astro.config.mjs`.

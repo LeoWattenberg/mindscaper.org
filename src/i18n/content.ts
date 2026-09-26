@@ -9,6 +9,7 @@ export interface SiteCopy {
 		mission: string;
 		projects: string;
 		join: string;
+		blog: string;
 		ariaLabel: string;
 	};
 	language: {
@@ -80,6 +81,7 @@ export const siteCopy: Record<Locale, SiteCopy> = {
 			mission: 'Mission',
 			projects: 'Projects',
 			join: 'Join us',
+			blog: 'Blog',
 			ariaLabel: 'Main navigation',
 		},
 		language: {
@@ -152,7 +154,7 @@ export const siteCopy: Record<Locale, SiteCopy> = {
 			body:
 				'Mindscaper is early, and that is exactly when your perspective matters most. Join the conversation, test the tools, or contribute the skills you care about.',
 			roles: ['Development', 'Design', 'Documentation', 'Translation'],
-			cta: 'Contribute on GitHub',
+			cta: 'See how to join',
 			aside: 'Open source. Local first. Built in public.',
 		},
 		footer: {
@@ -176,6 +178,7 @@ export const siteCopy: Record<Locale, SiteCopy> = {
 			mission: 'Mission',
 			projects: 'Projekte',
 			join: 'Mitmachen',
+			blog: 'Blog',
 			ariaLabel: 'Hauptnavigation',
 		},
 		language: {
@@ -248,7 +251,7 @@ export const siteCopy: Record<Locale, SiteCopy> = {
 			body:
 				'Mindscaper steht am Anfang — und genau jetzt zählt deine Perspektive am meisten. Diskutiere mit, teste die Werkzeuge oder bringe die Fähigkeiten ein, die dir wichtig sind.',
 			roles: ['Entwicklung', 'Design', 'Dokumentation', 'Übersetzung'],
-			cta: 'Auf GitHub beitragen',
+			cta: 'So kannst du mitmachen',
 			aside: 'Open Source. Lokal gedacht. Öffentlich entwickelt.',
 		},
 		footer: {

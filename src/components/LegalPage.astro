@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import BrandMark from './BrandMark.astro';
 
 const copy = {
 	metaTitle: 'Legal notice & privacy — Mindscaper',
@@ -47,17 +46,6 @@ const copy = {
 ---
 
 <BaseLayout title={copy.metaTitle} description={copy.metaDescription} canonicalPath="/legal/">
-	<header class="subpage-header">
-		<div class="container header-inner">
-			<a class="brand-link" href="/" aria-label="Mindscaper — Home"><BrandMark /></a>
-			<nav class="subpage-nav" aria-label="Main navigation">
-				<a href="/#projects">Projects</a>
-				<a href="/#about">About</a>
-				<a href="/join/">Get involved</a>
-				<a href="/blog/">Blog</a>
-			</nav>
-		</div>
-	</header>
 	<main id="main" class="page-main">
 		<div class="container">
 			<header class="page-intro">

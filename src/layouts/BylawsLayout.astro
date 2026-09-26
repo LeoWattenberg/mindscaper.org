@@ -1,6 +1,5 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import BrandMark from '../components/BrandMark.astro';
 
 const { frontmatter } = Astro.props;
 ---
@@ -9,13 +8,8 @@ const { frontmatter } = Astro.props;
 	title={frontmatter.title}
 	description={frontmatter.description}
 	canonicalPath="/bylaws/"
+	headerVariant="back"
 >
-	<header class="subpage-header">
-		<div class="container header-inner">
-			<a class="brand-link" href="/" aria-label="Mindscaper — Home"><BrandMark /></a>
-			<a class="back-link" href="/">← Back to Mindscaper</a>
-		</div>
-	</header>
 
 	<main id="main" class="container bylaws-layout">
 		<article class="bylaws-content">

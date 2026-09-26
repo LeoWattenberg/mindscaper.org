@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import BrandMark from './BrandMark.astro';
 
 const year = new Date().getFullYear();
 ---
@@ -9,18 +8,8 @@ const year = new Date().getFullYear();
 	title="Mindscaper — Creative software, built in the open"
 	description="Mindscaper is a non-profit association and open source project making creative tools for sound and video."
 	canonicalPath="/"
+	headerVariant="home"
 >
-	<header class="site-header">
-		<div class="container header-inner">
-			<a class="brand-link" href="/" aria-label="Mindscaper home"><BrandMark /></a>
-			<nav class="main-nav" aria-label="Main navigation">
-				<a href="#projects">Projects</a>
-				<a href="#about">About</a>
-				<a href="/join/">Get involved</a>
-				<a href="/blog/">Blog</a>
-			</nav>
-		</div>
-	</header>
 
 	<main id="main">
 		<section class="hero">

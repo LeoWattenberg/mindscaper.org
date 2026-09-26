@@ -1,0 +1,27 @@
+---
+import BrandMark from './BrandMark.astro';
+
+interface Props {
+	variant?: 'home' | 'subpage' | 'back';
+	activePage?: 'join' | 'blog';
+}
+
+const { variant = 'subpage', activePage } = Astro.props;
+const isHome = variant === 'home';
+---
+
+<header class={isHome ? 'site-header' : 'subpage-header'}>
+	<div class="container header-inner">
+		<a class="brand-link" href="/" aria-label={isHome ? 'Mindscaper home' : 'Mindscaper — Home'}><BrandMark /></a>
+		{variant === 'back' ? (
+			<a class="back-link" href="/">← Back to Mindscaper</a>
+		) : (
+			<nav class={isHome ? 'main-nav' : 'subpage-nav'} aria-label="Main navigation">
+				<a href={isHome ? '#projects' : '/#projects'}>Projects</a>
+				<a href={isHome ? '#about' : '/#about'}>About</a>
+				<a href="/join/" aria-current={activePage === 'join' ? 'page' : undefined}>Get involved</a>
+				<a href="/blog/" aria-current={activePage === 'blog' ? 'page' : undefined}>Blog</a>
+			</nav>
+		)}
+	</div>
+</header>

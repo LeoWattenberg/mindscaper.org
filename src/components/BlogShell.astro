@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import BrandMark from './BrandMark.astro';
 
 interface Props {
 	title: string;
@@ -12,18 +11,7 @@ interface Props {
 const { title, description, canonicalPath, index = false } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description} canonicalPath={canonicalPath}>
-	<header class="subpage-header">
-		<div class="container header-inner">
-			<a class="brand-link" href="/" aria-label="Mindscaper — Home"><BrandMark /></a>
-			<nav class="subpage-nav" aria-label="Main navigation">
-				<a href="/#projects">Projects</a>
-				<a href="/#about">About</a>
-				<a href="/join/">Get involved</a>
-				<a href="/blog/" aria-current={index ? 'page' : undefined}>Blog</a>
-			</nav>
-		</div>
-	</header>
+<BaseLayout title={title} description={description} canonicalPath={canonicalPath} activePage={index ? 'blog' : undefined}>
 	<main id="main" class="page-main"><slot /></main>
 	<footer class="site-footer">
 		<div class="container footer-inner">

@@ -1,14 +1,17 @@
 ---
 import '../styles/global.css';
+import SiteHeader from '../components/SiteHeader.astro';
 
 interface Props {
 	title: string;
 	description: string;
 	canonicalPath: string;
 	noindex?: boolean;
+	headerVariant?: 'home' | 'subpage' | 'back';
+	activePage?: 'join' | 'blog';
 }
 
-const { title, description, canonicalPath, noindex = false } = Astro.props;
+const { title, description, canonicalPath, noindex = false, headerVariant = 'subpage', activePage } = Astro.props;
 const canonical = new URL(canonicalPath, Astro.site);
 ---
 
@@ -37,6 +40,7 @@ const canonical = new URL(canonicalPath, Astro.site);
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
+		<SiteHeader variant={headerVariant} activePage={activePage} />
 		<slot />
 	</body>
 </html>

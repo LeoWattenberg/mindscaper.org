@@ -1,5 +1,81 @@
 ---
-import LandingPage from '../components/LandingPage.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<LandingPage />
+<BaseLayout
+	title="Mindscaper — Creative software, built in the open"
+	description="Mindscaper is a non-profit association and open source project making creative tools for sound and video."
+	canonicalPath="/"
+	headerVariant="home"
+	mainClass={null}
+	containerClass={null}
+>
+	<section class="hero">
+		<div class="container hero-inner">
+			<h1>Let's build our own<br /><span>creative software.</span></h1>
+			<div class="hero-bottom">
+				<p>Mindscaper is a non-profit association of creative people making tools for creative uses.</p>
+				<a class="text-link" href="#projects">Explore the projects <span aria-hidden="true">↓</span></a>
+			</div>
+		</div>
+	</section>
+
+	<section class="projects section-pad" id="projects" aria-labelledby="projects-heading">
+		<div class="container">
+			<div class="section-intro">
+				<h2 id="projects-heading">Our projects</h2>
+				<p>Two creative workspaces, built from the same open source foundation.</p>
+			</div>
+
+			<article class="project-row">
+				<div class="project-copy">
+					<h3>Soundscaper</h3>
+					<p>Record, edit, and mix audio in your browser. Your projects stay on your device.</p>
+					<div class="project-links">
+						<a class="text-link" href="https://soundscaper.org">Explore Soundscaper <span aria-hidden="true">↗</span></a>
+						<a class="secondary-link" href="https://github.com/LeoWattenberg/Soundscaper">Source code <span aria-hidden="true">↗</span></a>
+					</div>
+				</div>
+				<figure class="project-figure">
+					<picture>
+						<source media="(max-width: 600px)" srcset="/screenshots/soundscaper-narrow.png" />
+						<img src="/screenshots/soundscaper-wide.png" width="1280" height="800" loading="lazy" alt="Soundscaper audio editor with tracks and an open project" />
+					</picture>
+					<figcaption>Soundscaper interface</figcaption>
+				</figure>
+			</article>
+
+			<article class="project-row">
+				<div class="project-copy">
+					<h3>Framescaper</h3>
+					<p>Edit video, effects, and compositions in a focused workspace. Move projects between the two tools.</p>
+					<div class="project-links">
+						<a class="text-link" href="https://framescaper.org">Explore Framescaper <span aria-hidden="true">↗</span></a>
+						<a class="secondary-link" href="https://github.com/LeoWattenberg/Soundscaper">Source code <span aria-hidden="true">↗</span></a>
+					</div>
+				</div>
+				<figure class="project-figure">
+					<picture>
+						<source media="(max-width: 600px)" srcset="/screenshots/framescaper-narrow.png" />
+						<img src="/screenshots/framescaper-wide.png" width="1280" height="800" loading="lazy" alt="Framescaper video editor with preview and timeline" />
+					</picture>
+					<figcaption>Framescaper interface</figcaption>
+				</figure>
+			</article>
+		</div>
+	</section>
+
+	<section class="about section-pad" id="about" aria-labelledby="about-heading">
+		<div class="container about-grid">
+			<h2 id="about-heading">Made to be used,<br />shared, and improved.</h2>
+			<div class="about-copy">
+				<p>Mindscaper develops free, open source creative software. The association gives the projects a home and invites people to help shape what comes next.</p>
+				<p>Try the tools, share feedback, or contribute to the code.</p>
+				<div class="about-links">
+					<a class="text-link" href="/join/">Get involved <span aria-hidden="true">↗</span></a>
+					<a class="secondary-link" href="/bylaws/">Read our bylaws <span aria-hidden="true">↗</span></a>
+				</div>
+			</div>
+		</div>
+	</section>
+</BaseLayout>

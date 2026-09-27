@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  workflow_run:
+    workflows: [Generate Soundscaper commit graph]
+    types: [completed]
 
 permissions:
   contents: read
@@ -16,10 +19,13 @@ concurrency:
 
 jobs:
   build:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
+      - name: Restore commit snapshot
+        run: node scripts/generated-snapshot.mjs restore
       - name: Install, build, and upload site
         uses: withastro/action@v6
 

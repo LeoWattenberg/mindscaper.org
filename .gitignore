@@ -6,6 +6,9 @@ dist/
 # dependencies
 node_modules/
 
+# updated by the scheduled graph workflow on the generated branch
+public/data/soundscaper-commits.json
+
 # logs
 npm-debug.log*
 yarn-debug.log*

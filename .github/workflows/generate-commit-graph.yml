@@ -1,0 +1,40 @@
+name: Generate Soundscaper commit graph
+
+on:
+  schedule:
+    - cron: '41 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: soundscaper-commit-graph
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    name: Generate commit snapshot
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Restore previous snapshot
+        run: node scripts/generated-snapshot.mjs restore
+
+      - name: Generate commit snapshot
+        run: npm run graph:soundscaper-commits
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish snapshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          node scripts/generated-snapshot.mjs publish

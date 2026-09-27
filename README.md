@@ -29,7 +29,7 @@ The generated files are written to `dist/`.
 
 ## Pages
 
-The website is currently English-only. Its main pages are `/`, `/join/`, `/blog/`, and `/legal/`. The bylaws are at `/bylaws/`.
+The website is currently English-only. Its main pages are `/`, `/about/`, `/join/`, `/blog/`, and `/legal/`. The bylaws are at `/bylaws/`. The Soundscaper commit graph is at `/soundscaper-commit-graph/`.
 
 ## Visual assets
 
@@ -42,6 +42,8 @@ The blog index is at `/blog/`. Copy `src/content/blog/_template.md` to `src/cont
 ## Deployment
 
 Pushes to `main` are built and deployed through the workflow in `.github/workflows/deploy.yml`. The custom domain is configured as `mindscaper.org` through `public/CNAME` and `astro.config.mjs`.
+
+The hourly `.github/workflows/generate-commit-graph.yml` workflow fetches Soundscaper commits and line counts from GitHub. It publishes `public/data/soundscaper-commits.json` as a single commit on the disposable `generated` branch. Deploys restore that snapshot before building, and a successful generation run triggers a new deploy. The initial snapshot in `scripts/soundscaper-commits-seed.json` keeps the page usable before the generated branch exists. Locally, `npm run dev` and `npm run build` copy the seed when no snapshot is present; run `npm run sync:commit-graph` to fetch the latest one. Set `GITHUB_TOKEN` when running `npm run graph:soundscaper-commits` to avoid GitHub's anonymous API limit.
 
 In the GitHub repository settings, select **GitHub Actions** as the Pages source and enable **Enforce HTTPS** after the certificate has been provisioned.
 

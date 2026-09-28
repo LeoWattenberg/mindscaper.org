@@ -29,7 +29,7 @@ The generated files are written to `dist/`.
 
 ## Pages
 
-The website is currently English-only. Its main pages are `/`, `/about/`, `/join/`, `/blog/`, and `/legal/`. The bylaws are at `/bylaws/`. The Soundscaper commit graph is at `/soundscaper-commit-graph/`.
+The website is currently English-only. Its main pages are `/`, `/soundscaper/`, `/about/`, `/join/`, `/blog/`, and `/legal/`. The bylaws are at `/bylaws/`. The Soundscaper commit graph is at `/soundscaper-commit-graph/`.
 
 ## Visual assets
 

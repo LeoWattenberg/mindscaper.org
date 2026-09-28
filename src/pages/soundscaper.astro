@@ -1,0 +1,176 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+	title="Soundscaper — Audio editing, in your browser and on your desktop"
+	description="Meet Soundscaper, Mindscaper's open source audio editor. Record, edit, mix, and use your Audacity projects in a browser or desktop app."
+	canonicalPath="/soundscaper/"
+	mainClass={null}
+	containerClass={null}
+>
+	<section class="soundscaper-hero" aria-labelledby="soundscaper-heading">
+		<div class="container">
+			<div class="hero-copy">
+				<p class="eyebrow"><img src="/logos/soundscaper.svg" width="36" height="36" alt="" /> A Mindscaper project</p>
+				<h1 id="soundscaper-heading">Make room for <span>sound.</span></h1>
+				<p class="hero-lead">Soundscaper is an open source audio editor for recording, editing, and mixing. Work in your browser or download a desktop build, with the familiar depth of Audacity and more room to create.</p>
+				<div class="hero-actions">
+					<a class="primary-action" href="https://soundscaper.org">Open Soundscaper <span aria-hidden="true">↗</span></a>
+					<a class="secondary-action" href="https://github.com/LeoWattenberg/Soundscaper/releases">Get the desktop version <span aria-hidden="true">↗</span></a>
+				</div>
+				<p class="download-note">Desktop builds are not yet signed or notarized. Your operating system may flag them as potentially unsafe during installation.</p>
+			</div>
+			<figure class="hero-figure">
+				<picture>
+					<source media="(max-width: 600px)" srcset="/screenshots/soundscaper-narrow.png" />
+					<img src="/screenshots/soundscaper-wide.png" width="1280" height="800" alt="Soundscaper's audio timeline with multiple tracks and an open project" fetchpriority="high" />
+				</picture>
+				<figcaption>Soundscaper's audio workspace</figcaption>
+			</figure>
+		</div>
+	</section>
+
+	<section class="soundscaper-section familiar-section" aria-labelledby="familiar-heading">
+		<div class="container section-grid">
+			<div class="section-heading">
+				<p class="section-label">Familiar territory</p>
+				<h2 id="familiar-heading">The tools you know, ready for what’s next.</h2>
+			</div>
+			<div class="section-body">
+				<p>Soundscaper is mostly on par with Audacity 3's feature set. It restores almost all of the features missing from Audacity 4, including macros, play at speed, timed and sound-activated recording, effects, and LADSPA and VAMP plugins.</p>
+				<p>Bring your existing work along: import AUP, AUP3, and AUP4 projects; export AUP4 projects; and use Audacity macros and effect presets.</p>
+				<div class="detail-note">
+					<h3>A few deliberate changes</h3>
+					<p>MIDI support is omitted. Ripple editing and clip grouping take the place of sync-lock. Transport options now live in dropdowns beside the play and record buttons instead of a separate transport menu.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="soundscaper-section features-section" aria-labelledby="features-heading">
+		<div class="container">
+			<div class="features-intro">
+				<p class="section-label">Beyond the familiar</p>
+				<h2 id="features-heading">More ways to shape a project.</h2>
+				<p>Keep the editing workflow you know and reach for tools built for bigger audio and video work.</p>
+			</div>
+			<div class="feature-grid">
+				<article class="feature-card">
+					<span class="feature-number" aria-hidden="true">01</span>
+					<h3>Keep ideas close</h3>
+					<p>Move clips and files into a project bin for storage outside the timeline, ready when you need them.</p>
+				</article>
+				<article class="feature-card">
+					<span class="feature-number" aria-hidden="true">02</span>
+					<h3>Work with picture</h3>
+					<p>Use video tracks as a reference while recording and editing dialogue or dubbing.</p>
+				</article>
+				<article class="feature-card">
+					<span class="feature-number" aria-hidden="true">03</span>
+					<h3>Shape the sound</h3>
+					<p>Use a multiband compressor, de-esser, parametric EQ, and bitcrusher. Various Audacity effects can run in real time too.</p>
+				</article>
+				<article class="feature-card">
+					<span class="feature-number" aria-hidden="true">04</span>
+					<h3>Build the mix</h3>
+					<p>Place markers, automate changes, and route audio through send and group buses.</p>
+				</article>
+			</div>
+			<div class="desktop-feature">
+				<div>
+					<p class="section-label">Desktop only</p>
+					<h3>Assistance when you need it.</h3>
+				</div>
+				<p>AI plugins can transcribe audio, reduce noise and reverb, and separate music or speakers.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="soundscaper-section open-section" aria-labelledby="open-heading">
+		<div class="container section-grid">
+			<div class="section-heading">
+				<p class="section-label">Built in the open</p>
+				<h2 id="open-heading">A project that keeps getting stronger.</h2>
+			</div>
+			<div class="section-body">
+				<p>Soundscaper's automated test suite has grown substantially. Bugs still exist, but broader coverage should help make them rarer as the project develops.</p>
+				<a class="text-link" href="https://github.com/LeoWattenberg/Soundscaper">Explore the source <span aria-hidden="true">↗</span></a>
+				<a class="text-link" href="/soundscaper-commit-graph/">See the commit graph <span aria-hidden="true">↗</span></a>
+			</div>
+		</div>
+	</section>
+
+	<section class="soundscaper-section nonprofit-section" aria-labelledby="nonprofit-heading">
+		<div class="container nonprofit-grid">
+			<div>
+				<p class="section-label">Made by Mindscaper</p>
+				<h2 id="nonprofit-heading">Creative software belongs to its community.</h2>
+			</div>
+			<div class="nonprofit-copy">
+				<p>Soundscaper grew out of <a href="https://kw.media">kw.media</a> and is now a project of <a href="/about/">Mindscaper</a>, a non-profit association. Join us if you believe an Audacity-shaped tool is better in the hands of its community.</p>
+				<p>We want Mindscaper to be a home for creative software. Our video editor, <a href="https://framescaper.org">Framescaper</a>, is already in the works. From there, perhaps we can even challenge the breadth of Adobe Creative Cloud.</p>
+				<a class="primary-action" href="/join/">Join Mindscaper <span aria-hidden="true">↗</span></a>
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.soundscaper-hero { padding-block: clamp(3.5rem, 7vw, 6rem) clamp(3rem, 6vw, 5rem); }
+	.hero-copy { max-width: 54rem; }
+	.eyebrow, .section-label, .feature-number { font: 600 0.82rem/1.3 var(--sans); letter-spacing: 0.11em; text-transform: uppercase; }
+	.eyebrow { display: flex; align-items: center; gap: 0.65rem; color: var(--violet-dark); }
+	.eyebrow img { width: 2.25rem; height: 2.25rem; }
+	h1 { margin-top: 1.4rem; font-size: clamp(3.6rem, 8.5vw, 7.5rem); line-height: 0.98; }
+	h1 span { color: var(--violet); }
+	.hero-lead { max-width: 44rem; margin-top: 1.75rem; font-size: clamp(1.2rem, 2vw, 1.5rem); line-height: 1.55; }
+	.hero-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 2rem; }
+	.primary-action, .secondary-action { display: inline-flex; align-items: center; justify-content: center; gap: 0.7rem; min-height: 3.25rem; padding: 0.75rem 1.2rem; border: 1px solid var(--violet-dark); font: 600 1rem/1.25 var(--sans); }
+	.primary-action { background: var(--violet-dark); color: white; }
+	.primary-action:hover { background: var(--violet); border-color: var(--violet); color: white; }
+	.secondary-action { color: var(--violet-dark); }
+	.secondary-action:hover { border-color: var(--violet); color: var(--violet); }
+	.download-note { max-width: 41rem; margin-top: 0.85rem; color: var(--ink-soft); font: 400 0.88rem/1.5 var(--sans); }
+	.hero-figure { margin-top: clamp(3rem, 6vw, 5rem); }
+	.hero-figure picture { display: block; overflow: hidden; border: 1px solid var(--rule); background: var(--paper-muted); box-shadow: 0 18px 45px rgba(61, 19, 119, 0.1); }
+	.hero-figure img { width: 100%; height: auto; }
+	.hero-figure figcaption { margin-top: 0.6rem; color: var(--ink-soft); font: 400 0.8rem/1.4 var(--sans); }
+	.soundscaper-section { padding-block: clamp(4rem, 7vw, 6rem); border-top: 1px solid var(--rule); }
+	.section-grid, .nonprofit-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr); gap: clamp(2rem, 7vw, 7rem); }
+	.section-label { margin-bottom: 1.1rem; color: var(--violet-dark); }
+	h2 { max-width: 13ch; font-size: clamp(2.4rem, 4.4vw, 4.5rem); }
+	.section-body { max-width: 38rem; font-size: 1.1rem; }
+	.section-body > p + p, .nonprofit-copy p + p { margin-top: 1.2rem; }
+	.detail-note { margin-top: 2rem; padding: 1.4rem 1.6rem; border-left: 4px solid var(--orange); background: var(--paper-muted); }
+	.detail-note h3 { margin-bottom: 0.5rem; font-size: 1.25rem; }
+	.detail-note p { color: var(--ink-soft); font-size: 0.98rem; }
+	.features-section { background: var(--paper-muted); }
+	.features-intro { max-width: 45rem; }
+	.features-intro h2 { max-width: 18ch; }
+	.features-intro > p:last-child { margin-top: 1.2rem; color: var(--ink-soft); font-size: 1.1rem; }
+	.feature-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin-top: 3rem; border: 1px solid var(--rule); background: var(--rule); }
+	.feature-card { min-height: 15rem; padding: clamp(1.5rem, 3vw, 2.5rem); background: var(--paper-bright); }
+	.feature-number { color: var(--violet); }
+	.feature-card h3 { margin-top: 1.6rem; font-size: clamp(1.5rem, 2.3vw, 2rem); }
+	.feature-card p { max-width: 28rem; margin-top: 0.75rem; color: var(--ink-soft); }
+	.desktop-feature { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem; padding: clamp(1.5rem, 3vw, 2.5rem); background: var(--violet-dark); color: white; }
+	.desktop-feature .section-label { color: var(--orange); }
+	.desktop-feature h3 { font-size: clamp(1.5rem, 2.5vw, 2.2rem); }
+	.desktop-feature > p { max-width: 27rem; align-self: center; }
+	.open-section .text-link { margin-top: 1.5rem; margin-right: 1.5rem; }
+	.nonprofit-section { background: var(--paper-muted); }
+	.nonprofit-section h2 { max-width: 14ch; color: var(--violet-dark); }
+	.nonprofit-copy { max-width: 38rem; font-size: 1.1rem; }
+	.nonprofit-copy a:not(.primary-action) { color: var(--violet-dark); text-decoration: underline; text-underline-offset: 0.2em; }
+	.nonprofit-copy .primary-action { margin-top: 2rem; }
+	@media (max-width: 760px) {
+		.section-grid, .nonprofit-grid, .desktop-feature { grid-template-columns: 1fr; gap: 1.5rem; }
+		.feature-card { min-height: 0; }
+	}
+	@media (max-width: 600px) {
+		.feature-grid { grid-template-columns: 1fr; }
+		.hero-actions { flex-direction: column; align-items: stretch; }
+		.hero-figure { max-width: 28rem; margin-inline: auto; }
+	}
+</style>

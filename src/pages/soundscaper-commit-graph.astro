@@ -3,9 +3,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { COMMIT_GRAPH_DAYS, COMMIT_GRAPH_REPO, COMMIT_GRAPH_SNAPSHOT_PATH } from '../lib/commit-graph.js';
 
 const copy = {
-		eyebrow: 'Commit rhythm', title: 'Soundscaper Commit Graph',
-		intro: `See what hour the last ${COMMIT_GRAPH_DAYS} days of commits to ${COMMIT_GRAPH_REPO} were actually made.`,
-		privacy: 'Everything here comes from a snapshot that a GitHub Actions job regenerates on a schedule and that ships with the page. Your browser never asks GitHub itself: the line counts alone cost one request per commit, far more than any one visit could be given.',
+		eyebrow: 'Commit rhythm', title: 'Soundscaper/Framescaper development activity',
+		intro: `Last ${COMMIT_GRAPH_DAYS} days of commits to ${COMMIT_GRAPH_REPO}, covering both Soundscaper and Framescaper code`,
+		explanation: 'In Git, Commits are usually self-contained changes (eg. a bugfix would be its own commit), which cover multiple line changes. A line is simply a line of code. Editing an existing line is counted as +1, -1.',
 		summaryTitle: 'Summary', statTotal: 'Commits', statActiveDays: 'Active days', statBusiestHour: 'Busiest hour', statBusiestDay: 'Busiest day',
 		statAdded: 'Lines added', statRemoved: 'Lines removed',
 		statPerDay: '{value} per day on average', statOfDays: 'of {days} days', statNet: 'net {value} lines',
@@ -37,14 +37,14 @@ const copyJson = JSON.stringify(copy);
 ---
 
 <BaseLayout
-	title="Soundscaper Commit Graph — Mindscaper"
+	title="Soundscaper/Framescaper development activity — Mindscaper"
 	description="Explore when Soundscaper commits are made, with hourly charts and a day-by-hour heatmap."
 	canonicalPath="/soundscaper-commit-graph/"
 >
 	<header class="page-intro commit-graph-intro">
 		<h1>{copy.title}</h1>
 		<p>{copy.intro}</p>
-		<p>{copy.privacy}</p>
+		<p>{copy.explanation}</p>
 	</header>
 	<div class="commit-graph" data-commit-graph data-copy={copyJson} data-locale="en" data-snapshot-url={COMMIT_GRAPH_SNAPSHOT_PATH}>
 		<section class="commit-graph-panel commit-graph-wide" data-summary-panel>

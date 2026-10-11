@@ -355,6 +355,25 @@ p a,
 	font: 400 0.8rem/1.4 var(--sans);
 }
 
+.upcoming {
+	border-top: 1px solid var(--rule);
+}
+
+.upcoming-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: clamp(2rem, 5vw, 5rem);
+}
+
+.upcoming-project {
+	padding-block: 2rem;
+	border-top: 1px solid var(--rule);
+}
+
+.upcoming-project h3 {
+	font-size: clamp(1.65rem, 3vw, 2.3rem);
+}
+
 .future {
 	border-top: 1px solid var(--rule);
 	background: var(--paper-muted);
@@ -648,6 +667,7 @@ p a,
 	.hero-bottom,
 	.future-grid,
 	.project-row,
+	.upcoming-grid,
 	.join-links {
 		grid-template-columns: 1fr;
 	}
